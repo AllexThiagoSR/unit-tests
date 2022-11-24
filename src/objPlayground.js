@@ -36,7 +36,12 @@
 
 const calculator = (number1, number2) => {
   if (Number.isNaN(number1) || Number.isNaN(number2)) return;
-  return { sum: number1 + number2, mult: number1 * number2, div: Math.floor(number1 / number2), sub: number1 - number2 };
+  return {
+    sum: number1 + number2,
+    mult: number1 * number2,
+    div: Math.floor(number1 / number2),
+    sub: number1 - number2,
+  };
 };
 
 const arrayGenerator = (type, object) => {
@@ -44,7 +49,7 @@ const arrayGenerator = (type, object) => {
     keys: Object.keys(object),
     values: Object.values(object),
     entries: Object.entries(object),
-   }
+   };
    return returnsTypes[type];
 };
 
