@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 
-const getCharacter = require('../src/getCharacter');
+const {getCharacter, characters} = require('../src/getCharacter');
 
 /*
 A função getCharacter recebe uma string que representa o nome de um personagem e retorna um objeto contendo seu nome, sua classe e suas frases.
@@ -44,12 +44,15 @@ Retorno:
 
 describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   it('Verifica se a função `getCharacter` retorna o objeto do personagem corretamente.', () => {
-    fail('Teste vazio!');
     // ESCREVA SEUS TESTES ABAIXO:
     // 1. Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+    expect(getCharacter()).toBeUndefined();
     // 2. Teste se a função retorna o objeto correto para o parâmetro 'Arya',
+    expect(getCharacter('arya')).toEqual(characters['arya']);
     // 3. Teste se a função retorna o objeto correto para o parâmetro 'Brienne',
+    expect(getCharacter('Brienne')).toEqual(characters['brienne']);
     // 4. Teste se a função retorna o objeto correto para o parâmetro 'Melissandre',
+    expect(getCharacter('Melissandre')).toEqual(characters['melissandre']);
     // 5. Teste se o parâmetro não é Case Sensitive, ou seja, independente de conter letras maiúsculas ou minúsculas retorna o mesmo objeto relativo a ele.
     // 6. Teste se ao passar um nome que não está na tabela, a função retorna undefined.
   });
