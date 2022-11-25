@@ -41,17 +41,17 @@
 // 4: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato: 
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
-const addOrder = (order, menu, array, prices) => {
-  if (!order || typeof order !== 'string') throw new Error('O parâmetro deve ser uma string');
+const addOrder = (ordered, menu, array, prices) => {
+  if (!ordered || typeof ordered !== 'string') throw new Error('O parâmetro deve ser uma string');
   
   const values = Object.values(menu);
   for (let index = 0; index < values.length; index += 1) {
     const items = Object.keys(values[index]);
-    if (items.includes(order)) {
-      array.push(order)
-      prices.push(values[index][order]);
+    if (items.includes(ordered)) {
+      array.push(ordered);
+      prices.push(values[index][ordered]);
       return;
-    };
+    }
   }
   return 'Item indisponível';
 };
@@ -60,14 +60,14 @@ const sum = (array) => {
   let total = 0;
   array.forEach((value) => { total += value; });
   return parseFloat(total.toFixed(2));
-}
+};
 
 const createMenu = (menu) => {
   const fetchMenu = () => menu;
   const consumption = [];
   const prices = [];
-  const order = (order) => addOrder(order, menu, consumption, prices);
-  const pay = () => sum(prices);
+  const order = (ordered) => addOrder(ordered, menu, consumption, prices);
+  const pay = () => sum(prices) + (sum(prices) * 0.1);
 
   return {
     fetchMenu,
