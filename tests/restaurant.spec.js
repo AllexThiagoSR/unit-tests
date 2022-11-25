@@ -70,9 +70,12 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     // 8: Faça a implementação do item 8 do README no arquivo src/restaurant.js.
 
     // 9: Verifique se, ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos.
-
+    restaurant.order('cerveja');
+    restaurant.order('sanduiche');
+    expect(restaurant.consumption).toEqual(['coxinha', 'cerveja', 'sanduiche']);
     // 10: Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`.
-
+    restaurant.order('cerveja');
+    expect(restaurant.consumption).toEqual(['coxinha', 'cerveja', 'sanduiche', 'cerveja']);
     // 11: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, acrescido de 10%, conforme registrado em `objetoRetornado.consumption`.
 
     // 12: Faça a implementação do item 12 do README no arquivo src/restaurant.js.
