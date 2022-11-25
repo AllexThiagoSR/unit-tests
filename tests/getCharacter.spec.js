@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 
-const {getCharacter, characters} = require('../src/getCharacter');
+const getCharacter = require('../src/getCharacter');
 
 /*
 A função getCharacter recebe uma string que representa o nome de um personagem e retorna um objeto contendo seu nome, sua classe e suas frases.
@@ -44,6 +44,23 @@ Retorno:
 
 describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   it('Verifica se a função `getCharacter` retorna o objeto do personagem corretamente.', () => {
+    const characters = {
+      arya: {
+        name: 'Arya Stark',
+        class: 'Rogue',
+        phrases: ['Not today', 'A girl has no name.'],
+      },
+      brienne: {
+        name: 'Brienne Tarth',
+        class: 'Knight',
+        phrases: ['Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.'],
+      },
+      melissandre: {
+        name: 'Melissandre',
+        class: 'Necromancer',
+        phrases: ['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.'],
+      },
+    };
     // ESCREVA SEUS TESTES ABAIXO:
     // 1. Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
     expect(getCharacter()).toBeUndefined();
