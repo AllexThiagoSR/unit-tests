@@ -41,7 +41,7 @@
 // 4: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato: 
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
-const addOrder = (order, menu, array) => {
+const addOrder = (order, menu, array, prices) => {
   if (!order || typeof order !== 'string') throw new Error('O parâmetro deve ser uma string');
   
   const values = Object.values(menu);
@@ -49,24 +49,43 @@ const addOrder = (order, menu, array) => {
     const items = Object.keys(values[index]);
     if (items.includes(order)) {
       array.push(order)
+      prices.push(values[index][order]);
       return;
     };
   }
   return 'Item indisponível';
 };
 
+const sum = (array) => {
+  let total = 0;
+  array.forEach((value) => { total += value; });
+  return parseFloat(total.toFixed(2));
+}
+
 const createMenu = (menu) => {
   const fetchMenu = () => menu;
   const consumption = [];
-  const order = (order) => addOrder(order, menu, consumption);
+  const prices = [];
+  const order = (order) => addOrder(order, menu, consumption, prices);
+  const pay = () => sum(prices);
 
   return {
     fetchMenu,
     consumption,
     order,
+    pay,
   };
 };
 
+// const restaurant = createMenu({
+//   food: {coxinha: 3.90, sanduiche: 9.90},
+//   drinks: {agua: 3.90, cerveja: 6.90},
+// });
+// restaurant.order('coxinha');
+// restaurant.order('cerveja');
+// restaurant.order('sanduiche');
+// restaurant.order('cerveja');
+// console.log(restaurant.pay());
 // Faça o item 5 no arquivo tests/restaurant.spec.js
 
 // 6: Adicione ao objeto retornado por `createMenu()` uma chave de nome `consumption` que, como valor inicial, tem um array vazio.
