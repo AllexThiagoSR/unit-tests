@@ -67,7 +67,11 @@ const createMenu = (menu) => {
   const consumption = [];
   const prices = [];
   const order = (ordered) => addOrder(ordered, menu, consumption, prices);
-  const pay = () => sum(prices) + (sum(prices) * 0.1);
+  
+  const pay = () => {
+    const price = sum(prices);
+    return parseFloat((price + (price * 0.1)).toFixed(2));
+  };
 
   return {
     fetchMenu,

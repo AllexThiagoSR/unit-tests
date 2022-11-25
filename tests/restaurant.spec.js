@@ -59,6 +59,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(restaurant.consumption).toEqual(['coxinha', 'cerveja', 'sanduiche']);
     restaurant.order('cerveja');
     expect(restaurant.consumption).toEqual(['coxinha', 'cerveja', 'sanduiche', 'cerveja']);
-    expect(restaurant.pay()).toBe(27.6 + (27.6 * 0.1));
+    const valToBe = parseFloat((27.6 + (27.6 * 0.1)).toFixed(2));
+    expect(restaurant.pay()).toBe(valToBe);
   });
 });
