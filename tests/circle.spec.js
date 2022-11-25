@@ -36,9 +36,9 @@ describe('4 - Implemente os casos de teste para a função `circle`', () => {
     expect(circle(2)).toHaveProperty('circumference', 12.56);
     // Teste se dentro do objeto retornado, a função retorna uma `key` com `value` igual à área correta para um círculo de raio 3.
     const radius3 = circle(3);
-    radius3.area = parseFloat(radius3.area.toFixed(2));
-    expect(radius3).toHaveProperty('area', 28.26);
+    expect(radius3).toHaveProperty('area');
+    expect(radius3.area).toBeCloseTo(28.26);
     // Teste se a função retorna, em um objeto, os dados corretos de um círculo de raio 3.
-    expect(radius3).toEqual({ radius: 3, area: 28.26, circumference: 18.84 });
+    expect(radius3).toEqual({ radius: 3, area: 28.259999999999998, circumference: 18.84 });
   });
 });
