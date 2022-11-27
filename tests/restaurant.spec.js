@@ -46,10 +46,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
       food: {coxinha: 3.90, sanduiche: 9.90},
       drinks: {agua: 3.90, cerveja: 6.90},
     });
-    expect(restaurant.fetchMenu()).toEqual({
-      food: {coxinha: 3.90, sanduiche: 9.90},
-      drinks: {agua: 3.90, cerveja: 6.90},
-    });
+    expect(Object.keys(restaurant.fetchMenu())).toEqual(['food', 'drinks']);
     expect(restaurant.consumption).toEqual([]);
     restaurant.order('coxinha');
     expect(restaurant.consumption).toEqual(['coxinha']);
