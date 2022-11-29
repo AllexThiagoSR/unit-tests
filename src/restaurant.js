@@ -44,12 +44,12 @@
 const addOrder = (ordered, menu, array, prices) => {
   if (!ordered || typeof ordered !== 'string') throw new Error('O parâmetro deve ser uma string');
   
-  const values = Object.values(menu);
-  for (let index = 0; index < values.length; index += 1) {
-    const items = Object.keys(values[index]);
+  const menuValues = Object.values(menu);
+  for (let index = 0; index < menuValues.length; index += 1) {
+    const items = Object.keys(menuValues[index]);
     if (items.includes(ordered)) {
       array.push(ordered);
-      prices.push(values[index][ordered]);
+      prices.push(menuValues[index][ordered]);
       return;
     }
   }
@@ -67,7 +67,6 @@ const createMenu = (menu) => {
   const consumption = [];
   const prices = [];
   const order = (ordered) => addOrder(ordered, menu, consumption, prices);
-  
   const pay = () => {
     const price = sum(prices);
     return parseFloat((price + (price * 0.1)).toFixed(2));
